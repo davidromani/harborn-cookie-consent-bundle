@@ -151,7 +151,7 @@ class CookieConsentController
      */
     protected function setLocale(Request $request)
     {
-        $locale = $request->get('locale');
+        $locale = $request->attributes->get('locale') ?? $request->query->get('locale');
         if (empty($locale) === false) {
             $this->translator->setLocale($locale);
             $request->setLocale($locale);
